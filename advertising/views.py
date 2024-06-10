@@ -22,7 +22,7 @@ class AdViewSet(viewsets.ModelViewSet):
     def ad_spend_location(self, request, *args, **kwargs):
         location = request.query_params.get('location')
         if not location:
-            return Response({'detail': 'location query parameter is required.'}, status=400)
+            return Response({'detail': 'location query parameter is required...'}, status=400)
 
         total_ad_spend = Ad.objects.filter(location__name=location).aggregate(total_spend=Sum('spend'))
         return Response({'total_ad_spend': total_ad_spend})
